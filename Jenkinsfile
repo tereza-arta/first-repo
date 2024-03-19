@@ -2,8 +2,10 @@ pipeline {
   agent any
     stages {
       stage('Clone second repo') {
-        script {
-          git url: 'https://github.com/tereza-arta/second-repo.git', branch: 'main'
+        steps {
+          script {
+            git url: 'https://github.com/tereza-arta/second-repo.git', branch: 'main'
+          }
         }
       }
       stage('Get data from second jenkinsfile') {
