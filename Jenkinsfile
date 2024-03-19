@@ -8,24 +8,24 @@ Pipeline {
     GIT_COMMIT= "${COMMIT}"
     }
 
-    stages {     
+        stages {     
 
-        stage('List Files') {
-            steps {
-                script {
-                    sh "ls -al"
+            stage('List Files') {
+                steps {
+                    script {
+                        sh "ls -al"
+                    }    
                 }
             }
-        }
 
-        stage('Greetings') {
-            steps {
-                script {
-                    sh "echo Hello $MY_ENV"
-                     sh "echo Environment passed: GIT_COMMIT=$GIT_COMMIT"
+            stage('Greetings') {
+                steps {
+                    script {
+                        sh "echo Hello $MY_ENV"
+                         sh "echo Environment passed: GIT_COMMIT=$GIT_COMMIT"
+                    }
                 }
             }
-        }
          
-    }
+        }
 }
