@@ -1,4 +1,4 @@
-Pipeline {
+pipeline {
     agent none 
     environment {
         MY_ENV = "Devops"
