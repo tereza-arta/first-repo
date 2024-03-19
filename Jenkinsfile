@@ -1,5 +1,5 @@
 pipeline {
-    agent none 
+    agent any
     environment {
         MY_ENV = "Devops"
         GIT_COMMIT= "${COMMIT}"
