@@ -1,20 +1,30 @@
-pipeline {
-  agent any
-    stages {
-      stage('Clone second repo') {
-        steps {
-          script {
-            git url: 'https://github.com/tereza-arta/second-repo.git', branch: 'main'
-          }
-        }
-      }
-      stage('Get data from second jenkinsfile') {
-        steps {
-          script {
-            def secondJenkinsfile = load 'tereza-arta/second-repo/Jenkinsfile'
-            echo "Data from second repo is: ${secondJenkinsfile.mvar}"
-          }
-        }
-      }
+Pipeline {
+    // don't use 'agent any'
+    // 'agent none' allows the job to continue on the same node with the same files
+    agent none 
+
+    environment {
+    MY_ENV = "Devops"
+    GIT_COMMIT= "${COMMIT}"
     }
-}
+
+    stages {     
+
+        stage('List Files') {
+            steps {
+                script {
+                    sh "ls -al"
+                }
+            }
+        }
+
+        stage('Greetings') {
+            steps {
+                script {
+                    sh "echo Hello $MY_ENV"
+                     sh "echo Environment passed: GIT_COMMIT=$GIT_COMMIT"
+                }
+            }
+        }
+         
+    }
