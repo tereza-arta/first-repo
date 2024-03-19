@@ -11,7 +11,7 @@ pipeline {
       stage('Get data from second jenkinsfile') {
         steps {
           script {
-            def secondJenkinsfile = load 'second-repo/Jenkinsfile'
+            def secondJenkinsfile = load 'https://github.com/tereza-arta/second-repo.git/Jenkinsfile'
             echo "Data from second repo is: ${secondJenkinsfile.mvar}"
           }
         }
