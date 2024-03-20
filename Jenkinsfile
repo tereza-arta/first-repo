@@ -1,24 +1,13 @@
 pipeline {
     agent any
     environment {
-        MY_ENV = "Devops"
-        GIT_COMMIT= "${COMMIT}"
+        MY_VARIABLE = 'some_value'
     }
-    stages {     
-        stage('List Files') {
+    stages {
+        stage('Init stage') {
             steps {
-                script {
-                    sh "ls -al"
-                }    
+                echo "Hello"
             }
         }
-        stage('Greetings') {
-            steps {
-                script {
-                    sh "echo Hello $MY_ENV"
-                    sh "echo Environment passed: GIT_COMMIT=$GIT_COMMIT"
-                }
-            }
-        } 
     }
 }
